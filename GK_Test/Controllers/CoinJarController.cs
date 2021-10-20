@@ -26,9 +26,10 @@ namespace GK_Test.Controllers
 
         [HttpPost]
         [Route("AddCoin")]
-        public void AddCoin(enumCoinType coinType, int count = 1)
+        public string AddCoin(enumCoinType coinType, int count = 1)
         {
             this.coinJarService.AddCoin(coinType, count);
+            return "Successfully Added To Coin Jar";
         }
         [HttpGet]
         [Route("GetAmount")]

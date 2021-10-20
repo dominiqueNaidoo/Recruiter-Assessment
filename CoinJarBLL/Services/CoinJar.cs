@@ -6,7 +6,7 @@ namespace CoinJarBLL.Services
 {
     public interface ICoinJar
     {
-        decimal AddCoin(enumCoinType coinType, int count);
+        string AddCoin(enumCoinType coinType, int count);
         decimal GetTotalAmount();
         void Reset();
     }
@@ -17,9 +17,17 @@ namespace CoinJarBLL.Services
         { }
         private readonly Coin[] coins = Enum.GetValues(typeof(enumCoinType)).Cast<enumCoinType>().Select(x => new Coin(x)).ToArray();
 
-        public decimal AddCoin(enumCoinType coinType, int count = 1)
+        public string AddCoin(enumCoinType coinType, int count = 1)
         {
-            return coins.First(x => x.CoinType == coinType).Amount += count;
+            if (GetTotalAmount() == 42)
+            {
+                return "Coin jar is full.";
+            }
+            else
+            {
+                coins.First(x => x.CoinType == coinType).Amount += count;
+                return "Successfully Added to Coin Jar.";
+            }
         }
 
         public decimal GetTotalAmount() => coins.Select(c => (decimal)c.CoinType * (decimal)c.Amount).Sum() / 100m;
