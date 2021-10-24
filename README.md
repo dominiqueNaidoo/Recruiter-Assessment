@@ -1,5 +1,5 @@
-# GlobalKineticNetDevTest
-Coin Jar assessment for global kinetic
+# Recruiter-Assessment
+Coin Jar
 This project is the assessment for a recruiter. 
 the project does not have a database that needs to be setup and run
 
